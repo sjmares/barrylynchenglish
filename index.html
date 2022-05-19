@@ -108,6 +108,30 @@
     </button>
   </div>
 
+  <script>
+    var fullscreenButton = document.getElementById("carouselExampleCaptions");
+    var fullscreenDiv = document.getElementById("carouselExampleCaptions");
+    var fullscreenFunc = fullscreenDiv.requestFullscreen;
+
+    if (!fullscreenFunc) {
+      ['mozRequestFullScreen',
+        'msRequestFullscreen',
+        'webkitRequestFullScreen'].forEach(function (req) {
+          fullscreenFunc = fullscreenFunc || fullscreenDiv[req];
+        });
+    }
+
+    function enterFullscreen() {
+      fullscreenFunc.call(fullscreenDiv);
+    }
+
+    fullscreenButton.addEventListener('click', enterFullscreen);
+
+  </script>
+
+
+
+
 </body>
 
 </html>
