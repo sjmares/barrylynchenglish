@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+
+  <style type="text/css">
+    #fullscreen {
+      background-color: lightgrey;
+      padding: 20px;
+      border: 2px solid #000;
+    }
+
+    #esc {
+      display: none;
+    }
+
+    #fullscreen:-moz-full-screen {
+      padding: 42px;
+      background-color: pink;
+      border: 2px solid #f00;
+      font-size: 200%;
+    }
+
+    #fullscreen:-webkit-full-screen {
+      padding: 42px;
+      background-color: pink;
+      border: 2px solid #f00;
+      font-size: 200%;
+    }
+
+    #fullscreen:-moz-full-screen>h3 {
+      color: red;
+    }
+
+    #fullscreen:-webkit-full-screen>h3 {
+      color: red;
+    }
+
+    #fullscreen:-moz-full-screen>#styling {
+      display: none;
+    }
+
+    #fullscreen:-webkit-full-screen>#styling {
+      display: none;
+    }
+
+    #fullscreen:fullscreen > #esc {
+      display: block;
+    }
+
+    #fullscreen:-moz-full-screen > #esc {
+      display: block;
+    }
+
+      #fullscreen:-webkit-full-screen > #esc{
+      display: block;
+    }
+
+    #fullscreen:-moz-full-screen>button {
+      display: none;
+    }
+
+    #fullscreen:-webkit-full-screen>button {
+      display: none;
+    }
+
+    #fullscreen:fullscreen {
+      padding: 42px;
+      background-color: pink;
+      border: 2px solid #f00;
+      font-size: 200%;
+    }
+
+    #fullscreen:fullscreen>h3 {
+      color: red;
+    }
+
+    #fullscreen:fullscreen>#styling {
+      display: none;
+    }
+
+    #fullscreen:fullscreen>button {
+      display: none;
+    }
+  </style>
+
+  <title>Fullscreen Example :: HTML code</title>
+</head>
+
+<body>
+
+  <div id="fullscreen">
+    <h3>Fullscreen Demo with $w("#html1").allowFullScreen()</h3>
+    <p id="styling">The styling will change when entering fullscreen.</p>
+    <p id="esc">Press [Esc] to exit full screen.</p>
+    <button id="fullscreen-button">Enter Fullscreen</button>
+  </div>
+
+  <script>
+    var fullscreenButton = document.getElementById("fullscreen-button");
+    var fullscreenDiv = document.getElementById("fullscreen");
+    var fullscreenFunc = fullscreenDiv.requestFullscreen;
+
+    if (!fullscreenFunc) {
+      ['mozRequestFullScreen',
+        'msRequestFullscreen',
+        'webkitRequestFullScreen'].forEach(function (req) {
+          fullscreenFunc = fullscreenFunc || fullscreenDiv[req];
+        });
+    }
+
+    function enterFullscreen() {
+      fullscreenFunc.call(fullscreenDiv);
+    }
+
+    fullscreenButton.addEventListener('click', enterFullscreen);
+
+  </script>
+
+</body>
+
+</html>
